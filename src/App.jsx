@@ -1,11 +1,17 @@
-import "./App.css";
+import s from "./App.module.css";
+import Input from "./components/Input";
+import List from "./components/List";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>test</h1>
+    <div className={s.App}>
+      <div className={s.logo}>
+        <h1>tracker</h1>
+      </div>
+      <Input />
+      <List />
     </div>
   );
-}
+};
 
 export default App;

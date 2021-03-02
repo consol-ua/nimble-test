@@ -1,8 +1,16 @@
 .App {
   max-width: 560px;
-  background: #000;
   margin: 0 auto;
+  padding: 5px;
 }
+
+.logo h1{
+  text-align: center;
+}
+
+
+
+
 
 @media (max-width: 560px) {
   .App {

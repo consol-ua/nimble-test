@@ -1,0 +1,16 @@
+.input input { 
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border: none;
+  outline: none;
+  padding: 0 15px;
+  flex: 1 0 50%;
+}
+.input {
+  display: flex;
+  overflow: hidden;
+  border: 1px solid gray;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}

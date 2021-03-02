@@ -1,0 +1,30 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+}
+
+.item:nth-child(n) {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.35);
+}
+.item:first-child {
+  border-top: 1px solid rgba(128, 128, 128, 0.35);
+}
+
+.item div:not(:last-child){
+  margin-right: 5px;
+}
+
+.active {
+  background: rgb(255, 254, 227);
+  color: rgb(63, 175, 108);
+}
+
+.itemName {
+  flex: 0 1 60%;
+  overflow: hidden;
+}
+.itemTimer {
+  flex: 0 1 15%;
+}

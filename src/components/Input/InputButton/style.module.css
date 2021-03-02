@@ -1,0 +1,16 @@
+.button {
+  box-sizing: border-box;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+}
+
+.button:hover svg{
+  fill:rgb(48, 130, 81);
+}
+.button:active svg{
+  width: 98%;
+}
