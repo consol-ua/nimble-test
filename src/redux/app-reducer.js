@@ -12,7 +12,7 @@ const initialState = {
   newTrackerName: "",
   trackers: [
     {
-      id: 1,
+      id: 0,
       trackerName: "test tracker",
       isTracked: false,
       startTracker: null,
@@ -85,7 +85,7 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         trackers: state.trackers.map((el) => {
-          if (el.id === action.id) {
+          if (el.isTracked) {
             return {
               ...el,
               elapsedTime: action.timeNow - el.startTracker,
@@ -119,10 +119,9 @@ export const moveTracker = (id) => ({
   type: MOVE_TRACKER,
   id,
 });
-export const tickTracker = (id) => ({
+export const tickTracker = () => ({
   type: TICK_TRACKER,
   timeNow: +moment(),
-  id,
 });
 
 export default appReducer;

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import DelListItemButtom from "./DelListItemButton";
 import RunButton from "./RunButton";
 import s from "./style.module.css";
@@ -7,18 +6,7 @@ const ListItem = ({
   tracker: { id, trackerName, isTracked, elapsedTime },
   delItem,
   playTime,
-  tickTracker,
 }) => {
-  useEffect(() => {
-    if (isTracked) {
-      const nextSecond = 1000 - (Date.now() % 1000);
-      const tick = setInterval(() => {
-        tickTracker(id);
-      }, nextSecond);
-      return () => clearInterval(tick);
-    }
-  }, [id, isTracked, tickTracker]);
-
   const msToTime = (duration) => {
     let seconds = parseInt((duration / 1000) % 60, 10),
       minutes = parseInt((duration / (1000 * 60)) % 60, 10),

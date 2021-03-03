@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import {
   initApp,
@@ -16,6 +17,28 @@ const List = ({
   inititalazed,
   initApp,
 }) => {
+  useEffect(() => {
+    if (trackers.some((el) => el.isTracked)) {
+      const tick = setInterval(() => {
+        tickTracker();
+      }, 1000);
+      return () => clearInterval(tick);
+    }
+  }, [tickTracker, trackers]);
+
+  useEffect(() => {
+    if (inititalazed) {
+      localStorage.setItem("trackers", JSON.stringify(trackers));
+    } else {
+      if (localStorage.getItem("trackers")) {
+        const localTrackers = JSON.parse(localStorage.getItem("trackers"));
+        initApp(localTrackers);
+      } else {
+        initApp([]);
+      }
+    }
+  }, [initApp, inititalazed, trackers]);
+
   const delItem = (id) => {
     removeTracker(id);
   };
@@ -25,13 +48,6 @@ const List = ({
   const tick = (id) => {
     tickTracker(id);
   };
-
-  if (inititalazed) {
-    localStorage.setItem("trackers", JSON.stringify(trackers));
-  } else {
-    const localTrackers = JSON.parse(localStorage.getItem("trackers"));
-    initApp(localTrackers);
-  }
 
   return (
     <ul className={s.list}>
