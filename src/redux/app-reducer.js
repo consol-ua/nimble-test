@@ -11,14 +11,14 @@ const initialState = {
   inititalazed: false,
   newTrackerName: "",
   trackers: [
-    {
-      id: 0,
-      trackerName: "test tracker",
-      isTracked: false,
-      startTracker: null,
-      pauseTracker: null,
-      elapsedTime: null,
-    },
+    // {
+    //   id: 0,
+    //   trackerName: "test tracker",
+    //   isTracked: false,
+    //   startTracker: null,
+    //   pauseTracker: null,
+    //   elapsedTime: null,
+    // },
   ],
 };
 
