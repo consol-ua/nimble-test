@@ -8,14 +8,13 @@ const ListItem = ({
   delItem,
   playTime,
 }) => {
+  const date1 = moment(id);
+  const date2 = moment();
+  const result = date2.diff(date1, "second");
   return (
     <li className={`${s.item} ${isTracked && s.active}`}>
-      <div className={s.itemName}>
-        {trackerName === ""
-          ? `No name tracker ${moment().format("DD/MM HH:mm:ss")}`
-          : trackerName}
-      </div>
-      <div className={s.itemTimer}>timer</div>
+      <div className={s.itemName}>{+date1}</div>
+      <div className={s.itemTimer}>{+result}</div>
       <RunButton onClickEvent={() => playTime(id)} isRun={isTracked} />
       <DelListItemButtom onClickEvent={() => delItem(id)} />
     </li>

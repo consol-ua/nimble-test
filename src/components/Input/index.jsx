@@ -8,11 +8,12 @@ const Input = (props) => {
     props.inputNewTrackerName(e.target.value);
   };
 
-  const onClickEvent = () => {
-    props.addNewTracker();
-  };
-  const enterPress = (e) => {
-    e.key === "Enter" && props.addNewTracker();
+  const onAddTracker = (e) => {
+    if (!e.key) {
+      props.addNewTracker();
+    } else if (e.key === "Enter") {
+      props.addNewTracker();
+    }
   };
 
   return (
@@ -21,10 +22,10 @@ const Input = (props) => {
         type="text"
         placeholder="Enter tracker name"
         onChange={onChangeInput}
-        onKeyPress={enterPress}
+        onKeyPress={onAddTracker}
         value={props.inputValue}
       />
-      <InputButton onClickEvent={onClickEvent} />
+      <InputButton onClickEvent={onAddTracker} />
     </div>
   );
 };

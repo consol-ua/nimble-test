@@ -12,7 +12,7 @@ const initialState = {
   trackers: [
     {
       id: 1,
-      trackerName: "",
+      trackerName: "test tracker",
       isTracked: false,
       startTracker: 111,
     },
@@ -52,8 +52,11 @@ const appReducer = (state = initialState, action) => {
         ...state,
         trackers: [
           {
-            id: moment(),
-            trackerName: state.newTrackerName,
+            id: moment().valueOf(),
+            trackerName:
+              state.newTrackerName !== ""
+                ? state.newTrackerName
+                : `No name tracker #${"creacte data"}`,
             isTracked: true,
           },
           ...state.trackers,
