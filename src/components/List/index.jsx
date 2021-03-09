@@ -21,7 +21,7 @@ const List = ({
     if (trackers.some((el) => el.isTracked)) {
       const tick = setInterval(() => {
         tickTracker();
-      }, 1000);
+      }, 500);
       return () => clearInterval(tick);
     }
   }, [tickTracker, trackers]);
@@ -40,13 +40,12 @@ const List = ({
   }, [initApp, inititalazed, trackers]);
 
   const delItem = (id) => {
+    tickTracker();
     removeTracker(id);
   };
   const playTime = (id) => {
+    tickTracker();
     moveTracker(id);
-  };
-  const tick = (id) => {
-    tickTracker(id);
   };
 
   return (
@@ -56,7 +55,6 @@ const List = ({
           tracker={tracker}
           delItem={delItem}
           playTime={playTime}
-          tickTracker={tick}
           key={tracker.id}
         />
       ))}

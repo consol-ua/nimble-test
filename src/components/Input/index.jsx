@@ -1,18 +1,29 @@
 import { connect } from "react-redux";
-import { addNewTracker, inputNewTrackerName } from "../../redux/app-reducer";
+import {
+  addNewTracker,
+  inputNewTrackerName,
+  tickTracker,
+} from "../../redux/app-reducer";
 import InputButton from "./InputButton";
 import s from "./style.module.css";
 
-const Input = (props) => {
+const Input = ({
+  inputValue,
+  inputNewTrackerName,
+  addNewTracker,
+  tickTracker,
+}) => {
   const onChangeInput = (e) => {
-    props.inputNewTrackerName(e.target.value);
+    inputNewTrackerName(e.target.value);
   };
 
   const onAddTracker = (e) => {
     if (!e.key) {
-      props.addNewTracker();
+      tickTracker();
+      addNewTracker();
     } else if (e.key === "Enter") {
-      props.addNewTracker();
+      tickTracker();
+      addNewTracker();
     }
   };
 
@@ -23,7 +34,7 @@ const Input = (props) => {
         placeholder="Enter tracker name"
         onChange={onChangeInput}
         onKeyPress={onAddTracker}
-        value={props.inputValue}
+        value={inputValue}
       />
       <InputButton onClickEvent={onAddTracker} />
     </div>
@@ -33,6 +44,8 @@ const Input = (props) => {
 const mapStateToProps = (state) => ({
   inputValue: state.app.newTrackerName,
 });
-export default connect(mapStateToProps, { inputNewTrackerName, addNewTracker })(
-  Input
-);
+export default connect(mapStateToProps, {
+  inputNewTrackerName,
+  addNewTracker,
+  tickTracker,
+})(Input);
